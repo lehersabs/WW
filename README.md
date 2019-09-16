@@ -19,9 +19,7 @@ Question 1:
 Question 2: 
     The chromedriver executable file(src->main->resources) in the project works for Chrome version 76.
     Please replace the chromedriver based on the chrome browser version where the cases are being run. (Chromedriver               dependency for selenium)
-
     dayOfWeek needs to be entered in the testng.xml file as parameter value.
 
 Question 3:
-
     nth value needs to be entered as the value for the parameter, nthSmallestNumberInput, in testng.xml file.
