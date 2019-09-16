@@ -1,6 +1,8 @@
 package test;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.*;
@@ -27,12 +29,8 @@ public class SeleniumHelper {
         we.sendKeys(Keys.RETURN);
     }
 
-    public void elementPresentCheck(WebElement we) {
-        try {
-            Assert.assertTrue(we.isDisplayed());
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            System.out.println("Element not found : " + we);
-        }
+    public void waitTillElementIsDisplayed(WebElement we, WebDriverWait wait){
+        wait.until(ExpectedConditions.visibilityOfAllElements(we));
     }
 
     public void tearDown(WebDriver driver){

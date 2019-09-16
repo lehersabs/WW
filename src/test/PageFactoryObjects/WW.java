@@ -65,5 +65,19 @@ public class WW {
         return profile_name;
     }
 
+    @FindBy(xpath="//div[@class='meeting-schedule meeting-detail-bottom-section']")
+    WebElement studio_schedule;
+
+    public WebElement getStudio_schedule() {
+        return studio_schedule;
+    }
+
+    @FindBy(xpath="//div[contains(@class,'meeting-hours meeting-detail-bottom-section')] ")
+    WebElement operating_hours;
+
+    public WebElement getOperating_hours() {
+        return operating_hours;
+    }
+
 
 }

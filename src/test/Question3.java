@@ -21,7 +21,7 @@ public class Question3 {
         Integer cnt=0;
 
         Iterator it2 = set.iterator();
-        System.out.println("Final set");
+        System.out.println("\n\nFinal set");
         while(it2.hasNext()){
             System.out.print(it2.next() + " ");
         }

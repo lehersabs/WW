@@ -67,13 +67,16 @@ public class Question2 {
         //Step 7 : Click on the first search result and then, verify displayed location name/title matches with the name of the first searched result that was clicked.
         locator.clickFirstResultTitle();
         WebElement profilePageName = locator.getProfileName();
-        wait.until(ExpectedConditions.visibilityOfAllElements(profilePageName));
+        helper.waitTillElementIsDisplayed(locator.getProfileName(),wait);
+        helper.waitTillElementIsDisplayed(locator.getOperating_hours(),wait);
+        helper.waitTillElementIsDisplayed(locator.getStudio_schedule(),wait);
         sa.assertEquals(profilePageName.getText(),resultPageTitle);
 
         //Step 8 : From this location page, print TODAY’s hours of operation
         int currentDay=helper.getDayOfWeek();
         WebElement[] list = helper.getOperatingHours(driver,currentDay);
         for(WebElement w : list){
+            wait.until(ExpectedConditions.visibilityOf(w));
             System.out.println(w.getText());
         }
 
