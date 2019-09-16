@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite">
+    <test name="Test">
+        <parameter name="nthSmallestNumberInput" value="500" />
+        <parameter name="dayOfWeek" value="SUN" />
+        <classes>
+            <class name="test.Question1"/>
+            <class name="test.Question2"/>
+            <class name="test.Question3"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
