@@ -4,7 +4,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonArray;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.io.*;
 import java.util.Properties;
 
@@ -12,16 +14,16 @@ public class Question1 {
 
     Properties prop = new Properties();
 
-    String className = this.getClass().getSimpleName();
-
-    public boolean doesFileExist(String path) {
+    public void doesFileExist(String path) throws FileNotFoundException {
         File f = new File(path);
-        if (f.isFile() && f.exists())
-            return true;
-        return false;
+        if (!(f.isFile() && f.exists()))
+                throw new FileNotFoundException("File Doesn't exist");
+        else
+            System.out.println("File Exists");
     }
 
-    public void readContent(String path) {
+    public void readContent(String path) throws FileNotFoundException {
+        doesFileExist(path);
         JsonParser parser = new JsonParser();
         JsonObject jsonObject;
         JsonElement jsonElement = null;
@@ -32,37 +34,33 @@ public class Question1 {
         }
 
         jsonObject = jsonElement.getAsJsonObject();
-        for(String name: jsonObject.keySet()){
-            System.out.println("\n"+name);
+        for (String name : jsonObject.keySet()) {
+            System.out.println("\n" + name);
             JsonArray arrayOfDescription = jsonObject.get(name).getAsJsonArray();
-            for(JsonElement j : arrayOfDescription){
+            for (JsonElement j : arrayOfDescription) {
                 System.out.println(j.getAsString());
             }
         }
     }
 
-    public String readConfigFile(){
+    public String readConfigFile() {
         try {
             prop.load(new FileInputStream("./src/main/resources/config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String path=prop.getProperty("filepath");
+        String path = prop.getProperty("filepath");
         return path;
     }
 
     @Test(description = "Question 1(a)")
-    public void Question1a() {
+    public void Question1a() throws FileNotFoundException {
         String finalFilePath = readConfigFile();
-        if(doesFileExist(finalFilePath))
-            System.out.println("File Exists");
-        else
-            System.out.println("File Doesn't exist");
-
+        doesFileExist(finalFilePath);
     }
 
     @Test(description = "Question 1(b)")
-    public void Question1b() {
+    public void Question1b() throws FileNotFoundException {
         String finalFilePath = readConfigFile();
         readContent(finalFilePath);
     }
