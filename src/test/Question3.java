@@ -1,3 +1,8 @@
+/*Question 3:
+----------
+
+Generate 500 random numbers and create a method to print the nth smallest number in a programming language of your choice.  */
+
 package test;
 
 import org.testng.annotations.Parameters;
